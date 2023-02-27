@@ -16,10 +16,10 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Pages</h1> <br/>
-        <a href="/about"><h2>About</h2> </a>
-        <a href="/channels"><h2>Channels</h2></a>
-
+        <h1 className={styles.title}>Welcome to Discord 2.0</h1> <br/>
+        <div className={styles.card}>
+          <a href="/channels"><h2> View Channels</h2></a>
+        </div>
        
       </main>
     </div>
