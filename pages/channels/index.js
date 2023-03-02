@@ -54,8 +54,8 @@ export default function Channels({ channels: initalChannels }) {
         <div  className={styles.main}>
 
             <nav className={styles.nav}>
-                <a href="/"><Image src="/back-arrow.svg" width={50} height={50}/></a>
-                <a href='/'><Image src="/notdiscord.svg" width={50} height={50}/></a>
+                <Link href="/"><Image src="/back-arrow.svg" width={50} height={50} alt="knock off version of the discord logo"/></Link>
+                <Link href='/'><Image src="/notdiscord.svg" width={50} height={50} alt="knock off version of the discord logo"/></Link>
             </nav>
             <h1 className={styles.title} >Channels</h1>
             <button className={styles.formButton} type="submit" onClick={() => setView(!view)}>Create New Channel</button>
@@ -69,8 +69,8 @@ export default function Channels({ channels: initalChannels }) {
 
                     <ul className={styles.channelsContainer}>
                         {channels.map((channel) => (
-                            <li key={channel.id} className={styles.channel}> 
-                            <Link href={`/channels/${channels.name}`}>{channel.id} - {channel.name}</Link>
+                            <li key={channel.id} className={styles.channels}> 
+                            <Link href={`/channels/${channel.id}`}>{channel.id} - {channel.name}</Link>
                             </li>
                             ))}
                     </ul>

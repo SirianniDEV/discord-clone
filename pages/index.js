@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from '../styles/Home.module.css'
 import { useEffect, useState, } from 'react'
@@ -16,10 +17,10 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Image src="/notdiscord.svg" width={100} height={100}/>
+        <Image src="/notdiscord.svg" width={100} height={100} alt="knock off version of the discord logo"/>
         <h1 className={styles.title}>Welcome to NOT Discord </h1> <br/>
         <div className={styles.card}>
-          <a href="/channels"><h2> View Channels</h2></a>
+          <Link href="/channels"><h2> View Channels</h2></Link>
         </div>
        
       </main>

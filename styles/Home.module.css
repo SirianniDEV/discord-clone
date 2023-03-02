@@ -115,6 +115,11 @@
   margin-left: 0.5rem;
 }
 
+.channelsContainer {
+  flex-direction: column-reverse;
+  display: flex;
+}
+
 .channels {
   width: 80vw;
   border-style: none none solid none;
