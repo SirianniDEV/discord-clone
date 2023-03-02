@@ -6,30 +6,34 @@ import { useEffect, useState, } from 'react'
 import axios from 'axios';
 import { getAllChannels } from "@/database";
 
-function wait(seconds) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve()
-        }, seconds * 1000)
-    })
-}
+// function wait(seconds) {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve()
+//         }, seconds * 1000)
+//     })
+// }
 
 
-export default function Channels({channels}) {
+export default function Channels({ channels: initalChannels }) {
 
     const [view, setView] = useState (false)
-    const [channel, setChannel] = useState("");
-    const [newChannel, setNewChannel] = useState(channels);
+
+    const [text, setText] = useState("");
+    const [channels, setChannels] = useState(initalChannels);
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        console.log('submit', channel)
-
-        const results = await axios.post('/api/channels/', { name: channel });
-        const newChannelSet = results.data;
-        setNewChannel([...newChannel, newChannelSet]); 
-        setChannel("");
-    }
+        e.preventDefault();
+        console.log('submit', text);
+        // Send to the database (POST)
+    
+        const result = await axios.post(`/api/channels`, {
+          text,
+        });
+        const newChannel = result.data;
+    
+        setChannels([...channels, newChannel]);
+      };
 
 //   const [channels, setChannels] = useState([])
 
@@ -58,15 +62,15 @@ export default function Channels({channels}) {
                 {view ? 
                     <form onSubmit={handleSubmit} className={styles.form}>
                     <label> Channel name:</label>
-                    <input className={styles.formUsername} placeholder="Insert channel name" type="text" value={channel} onChange={(e) => setChannel(e.target.value)} /> 
+                    <input className={styles.formUsername} placeholder="Insert channel name" type="text" value={text} onChange={(e) => setText(e.target.value)} /> 
                     <button className={styles.formButton}  type="submit">Create</button>
                     </form>
                 : null}
 
                     <ul className={styles.channelsContainer}>
-                        {channels.map((channels) => (
-                            <li key={channels.id} className={styles.channels}> 
-                            <Link href={`/channels/${channels.name}`}>{channels.id} - {channels.name}</Link>
+                        {channels.map((channel) => (
+                            <li key={channel.id} className={styles.channel}> 
+                            <Link href={`/channels/${channels.name}`}>{channel.id} - {channel.name}</Link>
                             </li>
                             ))}
                     </ul>

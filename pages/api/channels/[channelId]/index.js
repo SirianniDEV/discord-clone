@@ -9,6 +9,8 @@ import {
   
     switch (req.method) {
       case "GET":
+        
+      const channel = await getChannelById(channelId);
         // Get a single channel by id
         res
           .status(200)
@@ -17,7 +19,6 @@ import {
           });
         break;
 
-        const channel = await getChannelById(channelId);
         if (!channel) {
           res.status(404).json({ message: "Channel not found" });
           break;
