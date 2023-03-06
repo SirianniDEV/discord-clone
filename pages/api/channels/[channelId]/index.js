@@ -11,13 +11,7 @@ import {
       case "GET":
         
       const channel = await getChannelById(channelId);
-        // Get a single channel by id
-        res
-          .status(200)
-          .json({
-            message: `GET request to /api/channels/${channelId} not implemented yet`,
-          });
-        break;
+
 
         if (!channel) {
           res.status(404).json({ message: "Channel not found" });
@@ -47,15 +41,6 @@ import {
         //     message: `PUT request to /api/channels/${channelId} not implemented yet`,
         //   });
         // break;
-
-      case "DELETE":
-        // Delete a channel by id
-        res
-          .status(200)
-          .json({
-            message: `DELETE request to /api/channels/${channelId} not implemented yet`,
-          });
-        break;
 
       case "DELETE":
         // Delete a channel by id

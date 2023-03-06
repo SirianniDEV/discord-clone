@@ -63,8 +63,10 @@ export async function getAllMessages(chatId) {
 }
 
 export async function getMessageById(id) {
+  
   const [rows] = await pool.query("SELECT * FROM messages WHERE id = ?", [id]);
   return rows[0];
+
 }
 
 export async function updateMessageById(id, text) {
